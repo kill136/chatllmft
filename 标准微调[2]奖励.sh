@@ -1,0 +1,25 @@
+CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+    --use_v2 \
+    --stage rm \
+    --do_train \
+    --dataset comparison_gpt4_zh \
+    --dataset_dir data \
+    --finetuning_type lora \
+    --output_dir output/covid/rm \
+    --overwrite_cache \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 4 \
+    --max_source_length 512 \
+    --max_target_length 512 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 100 \
+    --eval_steps 100 \
+    --learning_rate 1e-5 \
+    --num_train_epochs 1.0 \
+    --dev_ratio 0.05 \
+    --evaluation_strategy steps \
+    --load_best_model_at_end \
+    --plot_loss \
+    --fp16

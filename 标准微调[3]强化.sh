@@ -1,0 +1,22 @@
+CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+    --use_v2 \
+    --stage ppo \
+    --do_train \
+    --dataset covid_train,covid_dev \
+    --dataset_dir data/covid \
+    --finetuning_type lora \
+    --checkpoint_dir output/covid/sft \
+    --reward_model output/covid/rm \
+    --output_dir output/covid/ppo \
+    --overwrite_cache \
+    --per_device_train_batch_size 1 \
+    --gradient_accumulation_steps 2 \
+    --max_source_length 256 \
+    --max_target_length 128 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 100 \
+    --learning_rate 1e-5 \
+    --num_train_epochs 5.0 \
+    --resume_lora_training False \
+    --plot_loss

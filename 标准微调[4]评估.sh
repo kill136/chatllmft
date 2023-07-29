@@ -1,0 +1,13 @@
+CUDA_VISIBLE_DEVICES=0 python src/train_bash.py \
+    --use_v2 \
+    --stage sft \
+    --do_predict \
+    --dataset covid_test \
+    --dataset_dir data/covid \
+    --checkpoint_dir output/covid/sft,output/covid/ppo \
+    --output_dir output/covid/pred \
+    --overwrite_cache \
+    --per_device_eval_batch_size 2 \
+    --max_source_length 1024 \
+    --max_target_length 128 \
+    --predict_with_generate
